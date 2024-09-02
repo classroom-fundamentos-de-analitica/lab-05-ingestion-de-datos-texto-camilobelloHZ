@@ -3,17 +3,17 @@ import csv
 import pandas as pd
 
 
-def create_test_and_train_dataset():
-    path = ["/train/", "/test/"]
-    output_file = ["train_dataset.csv", "test_dataset.csv"]
-    folders = ["negative", "positive", "neutral"]
+def create_datasets():
+    dataset_paths = ["/train/", "/test/"]
+    dataset_files = ["train_dataset.csv", "test_dataset.csv"]
+    sentiment_folders = ["negative", "positive", "neutral"]
     i = 0
-    for file in output_file:
+    for file in dataset_files:
         with open(file, "w", newline="") as csvfile:
             writer = csv.writer(csvfile)
             writer.writerow(["phrase", "sentiment"])
-        for folder in folders:
-            folder_path = "data" + path[i] + folder
+        for folder in sentiment_folders:
+            folder_path = "data" + dataset_paths[i] + folder
             with open(file, "a", newline="") as csvfile:
                 writer = csv.writer(csvfile)
 
@@ -27,4 +27,4 @@ def create_test_and_train_dataset():
     return
 
 
-create_test_and_train_dataset()
+create_datasets()
